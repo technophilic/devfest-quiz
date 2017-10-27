@@ -22,6 +22,8 @@ function setQuestion(qno) {
     });
 }
 function constructTable(data) {
+    if(data!==null)
+    $('#table').html(`${JSON.stringify(data)}`);
     console.log(data);
 }
 $(function () {

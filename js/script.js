@@ -11,9 +11,10 @@ function Register(regno,name) {
         Materialize.toast('Registered successfully!',3000);
         var current = database.ref(`currentQuestion/value`);
         current.on('value', function(snapshot) {
-            $('#ans').val('');
-            Materialize.toast('New question!',3000);
             qn=snapshot.val();
+            $('#ans').val('');
+            $('#qn').html(`${qn}`);
+            Materialize.toast('New question!',3000);
             console.log('current question is - ',snapshot.val());
         });
     });
