@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quiz Admin</title>
+    <link rel="stylesheet" href="css/materialize.css">
+</head>
+<body>
+<h1>Admin</h1>
+<div class="container">
+    <div class="card-panel">
+        <div class="row">
+            <div class="input-field col s12 m6 offset-m3">
+                <input type="number" id="qno">
+                <label for="qno">Question number</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <button class="btn" id="update">
+                    Update !
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDzXu2C1k-yOQEudsN8apW5FrhWItVSKRw",
+        authDomain: "quiz-app-743b1.firebaseapp.com",
+        databaseURL: "https://quiz-app-743b1.firebaseio.com",
+        projectId: "quiz-app-743b1",
+        storageBucket: "",
+        messagingSenderId: "658444998725"
+    };
+    firebase.initializeApp(config);
+    var database = firebase.database();
+</script>
+<script src="js/jquery.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
