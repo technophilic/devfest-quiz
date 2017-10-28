@@ -31,6 +31,8 @@ function fetchQuestion(){
         qn=snapshot.val();
         $('#ans').val('');
         $('#qn').html(`${qn}`);
+        $("#loggedRegno").text(g_reg);
+        $("#loggedName").text(g_name);
         Materialize.toast('New question!',3000);
         console.log('current question is - ',snapshot.val());
     });
@@ -46,6 +48,7 @@ function Submit(regno,name,val){
     database.ref().update({
         [`currentQuestion/${qn}/response/${regno}`]: {
             name: name,
+            regno: regno,
             answer: val,
             t_stp:new Date()
         }
