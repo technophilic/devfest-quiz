@@ -1,16 +1,25 @@
 /**
- * Created by Vineeth on 28-10-2017.
- */
+* Created by Vineeth on 28-10-2017.
+*/
 var qn,g_reg,g_name;
+$("#logoutBlock").hide();
+$("#questionsBlock").hide();
 function Register(regno,name) {
     g_reg=regno;
     g_name=name;
+    if(!g_reg || !g_name){
+        Materialize.toast('All fields are required!',3000);
+        return;
+    }
     database.ref(`users/${regno}`).set({
         name: name
     }).then(function () {
         Materialize.toast('Registered successfully!',3000);
+        $("#loginBlock").fadeOut();
+        $("#logoutBlock").fadeIn();
         var current = database.ref(`currentQuestion/value`);
         current.on('value', function(snapshot) {
+            $("#questionsBlock").fadeIn();
             qn=snapshot.val();
             $('#ans').val('');
             $('#qn').html(`${qn}`);
@@ -38,11 +47,12 @@ function Submit(regno,name,val){
     });
 }
 $(function () {
-    $('#register').click(function(){
+    $( "#registerForm").submit(function( event ) {
         Register($("#regno").val(),$('#name').val());
+        event.preventDefault();
     });
     $('#sub').click(function () {
         if(g_name&&g_reg&&qn)
-            Submit(g_reg,g_name,$('#ans').val());
+        Submit(g_reg,g_name,$('#ans').val());
     });
 });
